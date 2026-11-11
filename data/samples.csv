@@ -1,0 +1,7 @@
+sample,condition,fastq
+persister_1,persister,data/SRR10550621.fastq.gz
+persister_2,persister,data/SRR10550622.fastq.gz
+persister_3,persister,data/SRR10550623.fastq.gz
+control_1,control,data/SRR10550618.fastq.gz
+control_2,control,data/SRR10550619.fastq.gz
+control_3,control,data/SRR10550620.fastq.gz

@@ -23,7 +23,7 @@ include { DESEQ2 } from ./modules/deseq2.nf
  */
 
  params {
-    samplesheet: Path = 'data/samples.csv' // colonnes : sample, condition, sra_id
+    samplesheet: Path = '../data/samples.csv' // colonnes : sample, condition, sra_id
  }
 
  workflow {
@@ -38,20 +38,21 @@ include { DESEQ2 } from ./modules/deseq2.nf
 
     // downloading samples
     download_ch = DOWNLOAD_SRA(samples_ch)
+
     //trimming samples
     trimmed_ch = TRIMMING(download_ch)
 
-    // downleading the reference genome and the genome annotations
+    // downloading the reference genome and the genome annotations
     genome_reference = DOWNLOAD_REF()
-    genome_fasta = genome_reference.fasta
-    genome_gff = genome_reference.gff
+    genome_fasta = genome_reference.fasta // reference genome
+    genome_gff = genome_reference.gff // genome annotations
     bowtie_index = BOWTIE_INDEX(genome_fasta)
 
     // mapping
     mapped_ch = BOWTIE_MAP(trimmed_ch, bowtie_index)
 
     // Readcount per gene
-
+    counts = FEATURECOUNTS(mapped_ch.collect()
 
     publish:
 

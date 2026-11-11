@@ -1,20 +1,13 @@
+
 process DOWNLOAD_REF {
-    label 'process_low'
 
     output:
-    path "genome.fna", emit: fasta
-    path "versions.yml", emit: versions
+    path "reference.fasta", emit: fasta
+    path "reference.gff", emit: gff
 
     script:
     """
-    # Téléchargement du génome de référence S. aureus (exemple via NCBI/wget ou curl selon dispo)
-    # Remplacer par l'URL ou l'outil adapté au projet
-    curl -o genome.fna.gz "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/013/465/GCF_000013465.1_ASM1346v1_genomic.fna.gz"
-    gunzip genome.fna.gz
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        curl: \$(curl --version | head -n 1 | cut -d' ' -f2)
-    END_VERSIONS
+    wget -q -O reference.fasta "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=CP000253.1&rettype=fasta"
+    wget -O reference.gff "https://www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?db=nuccore&report=gff3&id=CP000253.1"
     """
 }

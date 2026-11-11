@@ -3,19 +3,19 @@
  * Include modules
  */
 
-include { DOWNLOAD_SRA } from ./modules/download_sra.nf
+include { DOWNLOAD_SRA } from "./modules/download_sra.nf"
 
-include { DOWNLOAD_REF } from ./modules/download_ref.nf
+include { DOWNLOAD_REF } from "./modules/download_ref.nf"
 
-include { TRIMMING } from ./modules/trimming.nf
+include { TRIMMING } from "./modules/trimming.nf"
 
-include { BOWTIE_INDEX } from ./modules/bowtie_index.nf
+include { BOWTIE_INDEX } from "./modules/bowtie_index.nf"
 
-include { BOWTIE_MAP } from ./modules/bowtie_map.nf
+include { BOWTIE_MAP } from "./modules/bowtie_map.nf"
 
-include { FEATURECOUNTS } from ./modules/featurecounts.nf
+include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
-include { DESEQ2 } from ./modules/deseq2.nf
+//include { DESEQ2 } from "./modules/deseq2.nf"
 
 
 /*
@@ -23,7 +23,7 @@ include { DESEQ2 } from ./modules/deseq2.nf
  */
 
  params {
-    samplesheet: Path = '../data/samples.csv' // colonnes : sample, condition, sra_id
+    samplesheet: Path = 'data/samples.csv' // colonnes : sample, condition, sra_id
  }
 
  workflow {
@@ -34,13 +34,14 @@ include { DESEQ2 } from ./modules/deseq2.nf
     samples_ch = channel.fromPath(params.samplesheet)
                         .view { samples -> "Before split: ${samples}"}
                         .splitCsv(header: true) // split the .csv --> one array / row
-                        .map { row -> tuple(row.sample, row.condition, row. sra_id) } // transform the array in a tuple: easier to use
+                        .map { row -> tuple(row.sample, row.condition, row.sra_id) } // transform the array in a tuple: easier to use
+                        .view { samples -> "After split: ${samples}"}
 
     // downloading samples
     download_ch = DOWNLOAD_SRA(samples_ch)
 
     //trimming samples
-    trimmed_ch = TRIMMING(download_ch)
+    trimmed_ch = TRIMMING(download_ch.reads)
 
     // downloading the reference genome and the genome annotations
     genome_reference = DOWNLOAD_REF()
@@ -49,12 +50,11 @@ include { DESEQ2 } from ./modules/deseq2.nf
     bowtie_index = BOWTIE_INDEX(genome_fasta)
 
     // mapping
-    mapped_ch = BOWTIE_MAP(trimmed_ch, bowtie_index)
+    mapped_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index)
 
     // Readcount per gene
     counts = FEATURECOUNTS(mapped_ch[1].collect(), genome_gff).counts // counts
 
-    publish:
 
  }
 

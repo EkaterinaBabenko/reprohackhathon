@@ -1,7 +1,7 @@
 
 process TRIMMING {
 
-    tag "$meta.id"
+    tag "${sample}.id"
 
     label 'process_medium'
 
@@ -18,9 +18,9 @@ process TRIMMING {
 
     script:
     def args = "-q ${params.cutadapt_quality} -m ${params.cutadapt_minlen}"
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${sample.id}"
 
-    if (meta.single_end) {
+    if (sample.single_end) {
         """
         cutadapt \\
             --cores $task.cpus \\

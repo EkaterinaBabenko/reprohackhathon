@@ -1,5 +1,5 @@
 process DOWNLOAD_SRA {
-    tag "$meta.id"
+    tag "${sample}.id"
     label 'process_medium'
 
     conda "bioconda::sra-tools=3.0.0 bioconda::pigz=2.6"
@@ -14,7 +14,7 @@ process DOWNLOAD_SRA {
 
     script:
     """
-    fasterq-dump --split-files --threads $task.cpus $sra_id
+    fasterq-dump --split-files --threads ${task}.cpus ${sra_id}
     pigz *.fastq
 
     cat <<-END_VERSIONS > versions.yml

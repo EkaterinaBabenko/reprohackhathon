@@ -6,15 +6,15 @@ process DOWNLOAD_SRA {
     container "quay.io/biocontainers/sra-tools:3.0.0--h87f3376_0"
 
     input:
-    tuple val(meta), val(srr)
+    tuple val(sample), val(condition), val(sra_id)
 
     output:
-    tuple val(meta), path("*.fastq.gz"), emit: reads
+    tuple val(sample), val(condition), path("*.fastq.gz"), emit: reads
     path "versions.yml"                , emit: versions
 
     script:
     """
-    fasterq-dump --split-files --threads $task.cpus $srr
+    fasterq-dump --split-files --threads $task.cpus $sra_id
     pigz *.fastq
 
     cat <<-END_VERSIONS > versions.yml

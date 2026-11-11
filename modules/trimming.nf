@@ -10,10 +10,10 @@ process TRIMMING {
     container "quay.io/biocontainers/cutadapt:4.4--py310h1425a21_0"
 
     input:
-    tuple val(meta), path(reads)
+    tuple val(sample), val(condition), path(reads)
 
     output:
-    tuple val(meta), path("*.trim.fastq.gz"), emit: reads
+    tuple val(sample), val(condition), path("*.trim.fastq.gz"), emit: reads
     path "versions.yml", emit: versions
 
     script:

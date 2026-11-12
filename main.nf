@@ -52,9 +52,12 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
     // mapping
     mapped_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index)
+        .out
+        .bam
+        .map { sample, condition, bam, bai -> bam }
 
     // Readcount per gene
-    counts = FEATURECOUNTS(mapped_ch[1].collect(), genome_gff).counts // counts
+    counts = FEATURECOUNTS(mapped_ch.collect(), genome_gff).counts // counts
 
     publish:
         counts_matrix = counts

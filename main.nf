@@ -53,9 +53,8 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
     bowtie_index = BOWTIE_INDEX(genome_fasta)
 
     // mapping
-    bowtie_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index).out.sam
-    mapped_ch = SAMTOOLS_SORT(bowtie_ch.out.sam)
-        .out
+    bowtie_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index).sam
+    mapped_ch = SAMTOOLS_SORT(bowtie_ch)
         .bam
         .map { sample, condition, bam, bai -> bam }
 

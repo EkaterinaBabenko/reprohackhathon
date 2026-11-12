@@ -14,8 +14,8 @@ process BOWTIE_MAP {
     tuple val(index_name), path(index_files)
 
     output:
-    tuple val(sample), val(condition), path("${sample}.bam"), path("${sample}.bam.bai"), emit: sam //emit pour accéder aux sorties par leur nom
-    path "${sample}.bowtie.log",                                        emit: log
+    tuple val(sample), val(condition), path("${sample}.sam"), emit: sam
+    path "${sample}.bowtie.log", emit: log
 
     script:
     // Bowtie 1 : reads single-end (65 nt dans le papier), pas d'option -q ni --best :

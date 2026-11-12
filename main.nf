@@ -13,6 +13,8 @@ include { BOWTIE_INDEX } from "./modules/bowtie_index.nf"
 
 include { BOWTIE_MAP } from "./modules/bowtie_map.nf"
 
+include { SAMTOOLS_SORT } from "./modules/samtools_sort.nf"
+
 include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
 //include { DESEQ2 } from "./modules/deseq2.nf"
@@ -51,7 +53,9 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
     bowtie_index = BOWTIE_INDEX(genome_fasta)
 
     // mapping
-    mapped_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index)
+    bowtie_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index).out.sam
+    mapped_ch = mapped_ch = SAMTOOLS_SORT(bowtie_ch.out.sam)
+        .out
         .bam
         .map { sample, condition, bam, bai -> bam }
 

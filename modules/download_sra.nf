@@ -13,12 +13,7 @@ process DOWNLOAD_SRA {
 
     script:
     """
-    fasterq-dump --split-files --threads ${task}.cpus ${sra_id}
-    pigz *.fastq
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        sra-tools: \$(fasterq-dump --version 2>&1 | grep '^fasterq-dump' | cut -d' ' -f2)
-    END_VERSIONS
+    fasterq-dump --threads 1 --progress ${sra_id}
+    gzip *.fastq
     """
 }

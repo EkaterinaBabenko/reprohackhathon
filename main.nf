@@ -56,9 +56,13 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
     // Readcount per gene
     counts = FEATURECOUNTS(mapped_ch[1].collect(), genome_gff).counts // counts
 
+    publish:
+        counts_matrix = counts
 
  }
 
  output {
-
+    counts_matrix {
+        path { "${FEATURECOUNTS.name}" }
+    }
  }

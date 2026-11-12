@@ -9,7 +9,6 @@ process DOWNLOAD_SRA {
 
     output:
     tuple val(sample), val(condition), path("*.fastq.gz"), emit: reads
-    path "versions.yml", emit: versions
 
     script:
     """

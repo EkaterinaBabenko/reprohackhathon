@@ -23,7 +23,7 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
  */
 
  params {
-    samplesheet: Path = 'data/samples.csv' // colonnes : sample, condition, sra_id
+    samplesheet: Path
  }
 
  workflow {
@@ -34,8 +34,9 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
     samples_ch = channel.fromPath(params.samplesheet)
                         .view { samples -> "Before split: ${samples}"}
                         .splitCsv(header: true) // split the .csv --> one array / row
-                        .map { row -> tuple(row.sample, row.condition, row.sra_id) } // transform the array in a tuple: easier to use
                         .view { samples -> "After split: ${samples}"}
+                        .map { row -> tuple(row.sample, row.condition, row.SRA_id) } // transform the array in a tuple: easier to use
+                        .view { samples -> "After map: ${samples}"}
 
     // downloading samples
     download_ch = DOWNLOAD_SRA(samples_ch)

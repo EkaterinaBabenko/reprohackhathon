@@ -52,7 +52,6 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
     // mapping
     mapped_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index)
-        .out
         .bam
         .map { sample, condition, bam, bai -> bam }
 
@@ -66,6 +65,6 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
  output {
     counts_matrix {
-        path { "${FEATURECOUNTS.name}" }
+        path { "FEATURECOUNTS" }
     }
  }

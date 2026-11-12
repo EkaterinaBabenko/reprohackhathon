@@ -2,8 +2,7 @@ process DOWNLOAD_SRA {
     tag "${sample}.id"
     label 'process_medium'
 
-    conda "bioconda::sra-tools=3.0.0 bioconda::pigz=2.6"
-    container "quay.io/biocontainers/sra-tools:3.0.0--h87f3376_0"
+    container "biocontainers/fastqc:v0.11.9_cv8"
 
     input:
     tuple val(sample), val(condition), val(sra_id)

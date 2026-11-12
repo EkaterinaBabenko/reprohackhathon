@@ -5,7 +5,7 @@ process DOWNLOAD_SRA {
     container "staphb/sratoolkit"
 
     input:
-    tuple val(sample), val(condition), val(sra_id)
+    tuple val(sample), val(condition), val(SRA_id)
 
     output:
     tuple val(sample), val(condition), path("*.fastq.gz"), emit: reads
@@ -13,7 +13,7 @@ process DOWNLOAD_SRA {
 
     script:
     """
-    fasterq-dump --threads 1 --progress ${sra_id}
+    fasterq-dump --threads 2 --progress ${SRA_id}
     gzip *.fastq
     """
 }

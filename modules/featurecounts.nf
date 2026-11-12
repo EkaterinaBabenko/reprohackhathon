@@ -1,4 +1,7 @@
 process FEATURECOUNTS {
+
+    container "biocontainers/subread:v1.6.3dfsg-1-deb_cv1"
+
     input:
     path bams
     path gff

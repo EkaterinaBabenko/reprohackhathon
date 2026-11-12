@@ -1,6 +1,8 @@
 
 process TRIMMING {
 
+    container "biocontainers/cutadapt:v1.18-1-deb-py3_cv1"
+
     tag "${sample}.id"
 
     label 'process_medium'

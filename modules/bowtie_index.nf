@@ -8,6 +8,8 @@ process BOWTIE_INDEX {
     //container params.bowtie_container          // défini dans nextflow.config
     //publishDir "${params.outdir}/bowtie_index", mode: 'copy'  //déjà dans nextflow.config
 
+    container "biocontainers/bowtie:v1.2.2dfsg-4-deb_cv1"
+
     input:
     path genome_fasta
 

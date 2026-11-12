@@ -7,6 +7,8 @@
 process BOWTIE_MAP {
     tag "${sample}"                      // un process par échantillon : on voit lequel tourne
 
+    container "biocontainers/bowtie:v1.2.2dfsg-4-deb_cv1"
+
     input:
     tuple val(sample), path(reads)
     tuple val(index_name), path(index_files)

@@ -2,7 +2,7 @@ process DOWNLOAD_SRA {
     tag "${sample}.id"
     label 'process_medium'
 
-    container "biocontainers/fastqc:v0.11.9_cv8"
+    container "staphb/sratoolkit"
 
     input:
     tuple val(sample), val(condition), val(sra_id)

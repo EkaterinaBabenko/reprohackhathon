@@ -54,7 +54,7 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
     // mapping
     bowtie_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index).out.sam
-    mapped_ch = mapped_ch = SAMTOOLS_SORT(bowtie_ch.out.sam)
+    mapped_ch = SAMTOOLS_SORT(bowtie_ch.out.sam)
         .out
         .bam
         .map { sample, condition, bam, bai -> bam }

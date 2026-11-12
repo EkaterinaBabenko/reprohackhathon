@@ -1,7 +1,7 @@
 
 process TRIMMING {
 
-    container "biocontainers/cutadapt:v1.18-1-deb-py3_cv1"
+    container "pipecraft/cutadapt:5.2-pc1.2.0"
 
     tag "${sample}.id"
 

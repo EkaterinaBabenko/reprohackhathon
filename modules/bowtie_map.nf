@@ -7,13 +7,15 @@
 process BOWTIE_MAP {
     tag "${sample}"                      // un process par échantillon : on voit lequel tourne
 
+    container "biocontainers/bowtie:v1.2.2dfsg-4-deb_cv1"
+
     input:
-    tuple val(sample), path(reads)
+    tuple val(sample), val(condition), path(reads)
     tuple val(index_name), path(index_files)
 
     output:
-    tuple val(sample), path("${sample}.bam"), path("${sample}.bam.bai"), emit: bam //emit pour accéder aux sorties par leur nom
-    path "${sample}.bowtie.log",                                        emit: log
+    tuple val(sample), val(condition), path("${sample}.sam"), emit: sam
+    path "${sample}.bowtie.log", emit: log
 
     script:
     // Bowtie 1 : reads single-end (65 nt dans le papier), pas d'option -q ni --best :
@@ -21,14 +23,6 @@ process BOWTIE_MAP {
     // La substitution de processus <(...) demande bash : déjà imposé par process.shell
     // dans nextflow.config. La sortie d'erreur de bowtie (statistiques) va dans le .log.
     """
-    bowtie -p ${task.cpus} -S ${index_name} <(gunzip -c ${reads}) 2> ${sample}.bowtie.log \\
-        | samtools sort -@ ${task.cpus} -o ${sample}.bam -
-
-    samtools index ${sample}.bam
-    """
-
-    stub:
-    """
-    touch ${sample}.bam ${sample}.bam.bai ${sample}.bowtie.log
+    bowtie -p 2 -S ${index_name} <(gunzip -c ${reads}) > ${sample}.sam 2> ${sample}.bowtie.log
     """
 }

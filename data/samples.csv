@@ -1,0 +1,7 @@
+sample,condition,SRA_id
+persister_1,persister,SRR10379721
+persister_2,persister,SRR10379722
+persister_3,persister,SRR10379723
+control_1,control,SRR10379724
+control_2,control,SRR10379725
+control_3,control,SRR10379726

@@ -8,9 +8,10 @@ process FEATURECOUNTS {
 
     output:
     path 'counts.txt', emit: counts
+    path 'counts.txt.summary',  emit: summary
 
     script:
     """
-     featureCounts --extraAttributes Name -t gene -g ID -s 1 -F GFF -T ${task.cpus} -a ${gff} -o counts.txt ${bams}
+     featureCounts --extraAttributes Name -t gene -g ID -s 1 -F GTF -T 4 -a ${gff} -o counts.txt ${bams}
     """
 }

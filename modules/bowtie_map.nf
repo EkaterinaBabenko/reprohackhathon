@@ -23,6 +23,6 @@ process BOWTIE_MAP {
     // La substitution de processus <(...) demande bash : déjà imposé par process.shell
     // dans nextflow.config. La sortie d'erreur de bowtie (statistiques) va dans le .log.
     """
-    bowtie -p ${task.cpus} -S ${index_name} <(gunzip -c ${reads}) 2> ${sample}.bowtie.log
+    bowtie -p 2 -S ${index_name} <(gunzip -c ${reads}) > ${sample}.sam 2> ${sample}.bowtie.log
     """
 }

@@ -10,7 +10,7 @@ process SAMTOOLS_SORT {
 
     script:
     """
-    samtools sort -@ ${task.cpus} -o ${sample}.bam ${sam}
+    samtools sort -@ 2 -o ${sample}.bam ${sam}
     samtools index ${sample}.bam
     """
 }

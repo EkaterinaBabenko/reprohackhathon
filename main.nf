@@ -59,8 +59,9 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
         .map { sample, condition, bam, bai -> bam }
 
     // Readcount per gene
-    counts = FEATURECOUNTS(mapped_ch.collect(), genome_gff).counts // counts
-    summary = FEATURECOUNTS(mapped_ch.collect(), genome_gff).summary
+    counts_ch = FEATURECOUNTS(mapped_ch.collect(), genome_gff)
+    counts = count_ch.counts // counts array
+    summary = count_ch.summary // summary array
 
     publish:
         counts_matrix = counts

@@ -15,7 +15,7 @@ include { BOWTIE_MAP } from "./modules/bowtie_map.nf"
 
 include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
-//include { DESEQ2 } from "./modules/deseq2.nf"
+include { DESEQ2 } from "./modules/deseq2.nf"
 
 
 /*
@@ -60,6 +60,9 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
     counts = counts_ch.counts // counts array
     summary = counts_ch.summary // summary array
 
+    // Expression différentielle (persisters vs contrôles)
+    deseq2_ch = DESEQ2(counts, file(params.samplesheet))
+
     publish:
         counts_matrix = counts
         summary_matrix = summary
@@ -74,3 +77,6 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
         path { "FEATURECOUNTS" }
     }
  }
+
+
+ 

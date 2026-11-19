@@ -15,7 +15,7 @@ include { BOWTIE_MAP } from "./modules/bowtie_map.nf"
 
 include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
-//include { DESEQ2 } from "./modules/deseq2.nf"
+include { DESEQ2 } from "./modules/deseq2.nf"
 
 
 /*
@@ -55,6 +55,9 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
     // Readcount per gene
     counts = FEATURECOUNTS(mapped_ch[1].collect(), genome_gff).counts // counts
+
+    // Expression différentielle (persisters vs contrôles)
+    deseq2_ch = DESEQ2(counts, file(params.samplesheet))
 
 
  }

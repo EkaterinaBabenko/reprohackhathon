@@ -17,7 +17,7 @@ include { SAMTOOLS_SORT } from "./modules/samtools_sort.nf"
 
 include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
-include { DESEQ2 } from "./modules/deseq2.nf"
+//include { DESEQ2 } from "./modules/deseq2.nf"
 
 
 /*
@@ -53,26 +53,27 @@ include { DESEQ2 } from "./modules/deseq2.nf"
     bowtie_index = BOWTIE_INDEX(genome_fasta)
 
     // mapping
-    mapped_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index)
+    bowtie_ch = BOWTIE_MAP(trimmed_ch.reads, bowtie_index).sam
+    mapped_ch = SAMTOOLS_SORT(bowtie_ch)
+        .bam
+        .map { sample, condition, bam, bai -> bam }
 
-    // sorting and indexing the alignments (SAM -> sorted BAM)
-    sorted_ch = SAMTOOLS_SORT(mapped_ch.sam)
+    // Readcount per gene
+    counts_ch = FEATURECOUNTS(mapped_ch.collect(), genome_gff)
+    counts = counts_ch.counts // counts array
+    summary = counts_ch.summary // summary array
 
-    // Readcount per gene: featureCounts needs all the BAM files in a single call
-    bams_ch = sorted_ch.bam
-                       .map { _sample, _condition, bam, _bai -> bam } // keep only the BAM files
-                       .collect()
-    counts = FEATURECOUNTS(bams_ch, genome_gff).counts // counts
-
-    // Expression différentielle (persisters vs contrôles)
-    deseq2_ch = DESEQ2(counts, file(params.samplesheet))
-
+    publish:
+        counts_matrix = counts
+        summary_matrix = summary
 
  }
 
  output {
-
+    counts_matrix {
+        path { "FEATURECOUNTS" }
+    }
+    summary_matrix {
+        path { "FEATURECOUNTS" }
+    }
  }
-
-
- 

@@ -1,20 +1,49 @@
 
 process TRIMMING {
 
-    container "pipecraft/cutadapt:5.2-pc1.2.0"
-
-    tag "${sample}.id"
+    tag "$meta.id"
 
     label 'process_medium'
 
+    conda "bioconda::cutadapt=4.4"
+
     input:
-    tuple val(sample), val(condition), path(reads)
+    tuple val(meta), path(reads)
 
     output:
-    tuple val(sample), val(condition), path("*.trimmed.fastq.gz"), emit: reads
+    tuple val(meta), path("*.trim.fastq.gz"), emit: reads
+    path "versions.yml", emit: versions
 
     script:
-    """
-    cutadapt -q 20 -m 25 -a AGATCGGAAGAGC -o ${sample}.trimmed.fastq.gz ${reads}
-    """
+    def args = "-q ${params.cutadapt_quality} -m ${params.cutadapt_minlen}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
+
+    if (meta.single_end) {
+        """
+        cutadapt \\
+            --cores $task.cpus \\
+            $args \\
+            -o ${prefix}.trim.fastq.gz \\
+            $reads
+
+        cat <<-END_VERSIONS > versions.yml
+        "${task.process}":
+            cutadapt: \$(cutadapt --version)
+        END_VERSIONS
+        """
+    } else {
+        """
+        cutadapt \\
+            --cores $task.cpus \\
+            $args \\
+            -o ${prefix}_1.trim.fastq.gz \\
+            -p ${prefix}_2.trim.fastq.gz \\
+            ${reads[0]} ${reads[1]}
+
+        cat <<-END_VERSIONS > versions.yml
+        "${task.process}":
+            cutadapt: \$(cutadapt --version)
+        END_VERSIONS
+        """
+    }
 }

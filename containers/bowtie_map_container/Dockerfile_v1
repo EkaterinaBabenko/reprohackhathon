@@ -1,0 +1,74 @@
+FROM ubuntu:latest
+LABEL authors="juliennotarangelo"
+
+ARG DEBIAN_TAG=bookworm-slim
+
+# -----------------------------------------------------------------------------
+# Étape 1 : compilation des outils ( builder )
+# -----------------------------------------------------------------------------
+FROM debian:${DEBIAN_TAG} AS builder
+
+ARG BOWTIE_VERSION=0.12.7
+ARG SAMTOOLS_VERSION=1.9
+# Empreintes SHA256 des archives sources (intégrité vérifiée au build)
+ARG BOWTIE_SHA256=609a6a0ad0b1a5d97908ca17da7bbf5d6dc407c7b9c49713cdc9c40f056a586a
+ARG SAMTOOLS_SHA256=083f688d7070082411c72c27372104ed472ed7a620591d06f928e653ebc23482
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential ca-certificates curl unzip zlib1g-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/build
+
+# ---- Bowtie 0.12.7 ----------------------------------------------------------
+# Sources : https://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/
+RUN curl -fsSL -o bowtie-${BOWTIE_VERSION}-src.zip \
+        "https://downloads.sourceforge.net/project/bowtie-bio/bowtie/${BOWTIE_VERSION}/bowtie-${BOWTIE_VERSION}-src.zip" && \
+    echo "${BOWTIE_SHA256}  bowtie-${BOWTIE_VERSION}-src.zip" | sha256sum -c - && \
+    unzip -q bowtie-${BOWTIE_VERSION}-src.zip && \
+    rm bowtie-${BOWTIE_VERSION}-src.zip
+
+ARG BOWTIE_CXX_FIX="-std=gnu++98 -fpermissive \
+    -include cstring -include cstdlib -include cstdio -include cassert \
+    -include cctype -include cstdint -include cstddef \
+    -include unistd.h -include fcntl.h -include sys/stat.h"
+
+RUN cd bowtie-${BOWTIE_VERSION} && \
+    make -j"$(nproc)" EXTRA_CXXFLAGS="${BOWTIE_CXX_FIX}" && \
+    cp bowtie bowtie-build bowtie-inspect /usr/local/bin/
+
+# ---- samtools 1.9 -------------------------------------------------------------
+# Sources : https://github.com/samtools/samtools/releases/tag/1.9
+RUN curl -fsSL -o samtools-${SAMTOOLS_VERSION}.tar.bz2 \
+        "https://github.com/samtools/samtools/releases/download/${SAMTOOLS_VERSION}/samtools-${SAMTOOLS_VERSION}.tar.bz2" && \
+    echo "${SAMTOOLS_SHA256}  samtools-${SAMTOOLS_VERSION}.tar.bz2" | sha256sum -c - && \
+    tar -xjf samtools-${SAMTOOLS_VERSION}.tar.bz2 && \
+    rm samtools-${SAMTOOLS_VERSION}.tar.bz2 && \
+    cd samtools-${SAMTOOLS_VERSION} && \
+    ./configure --prefix=/usr/local --without-curses && \
+    make && make install
+
+# -----------------------------------------------------------------------------
+# Étape 2 : image finale minimale
+# -----------------------------------------------------------------------------
+FROM debian:${DEBIAN_TAG}
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libstdc++6 zlib1g && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local/bin/ /usr/local/bin/
+
+# Le build échoue si les versions ne sont pas exactement celles attendues
+RUN bowtie --version | head -3 | grep -q "0.12.7" && \
+    samtools --version | head -1 | grep -q "samtools 1.9"
+
+LABEL org.opencontainers.image.title="bowtie_map (Bowtie 0.12.7 + samtools 1.9)" \
+      org.opencontainers.image.description="Bowtie 0.12.7 (mapping, paramètres par défaut) et samtools 1.9 pour l'étape bowtie_map du workflow Article 1 (projet reprohackathon)" \
+      org.opencontainers.image.version="0.12.7"
+
+ENV LC_ALL=C
+
+CMD ["bash"]
+ENTRYPOINT ["top", "-b"]

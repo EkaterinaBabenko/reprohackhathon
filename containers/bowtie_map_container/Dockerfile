@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 # --- 1. Metadonnees de reproductibilite (visibles via `docker inspect`) ------
 LABEL org.opencontainers.image.title="bowtie" \
@@ -48,15 +48,7 @@ RUN wget -q "$BOWTIE_URL" -O bowtie-bin.zip && \
     rm -rf /opt/src
 
 # --- 4. Auto-test --------------------------------------------------------------
-# Ce RUN echoue (et casse le build) si un binaire ne s'execute pas sur
-# l'image. Notamment : il valide que les binaires de 2010 demarrent bien
-# sur la glibc d'Ubuntu 22.04.
-# Les versions affichees pendant le build sont a copier dans ton rapport.
 RUN bowtie --version && samtools --version
 
 # --- 5. Comportement par defaut ------------------------------------------------
-# Pas de ENTRYPOINT : le workflow (Snakemake/Nextflow) appelle explicitement
-# `bowtie`, `bowtie-build`, `samtools`, etc. bash n'est la que pour l'usage
-# interactif, et pour les commandes utilisant la substitution de processus
-# <(gunzip -c ...) qui exige un shell bash.
 CMD ["bash"]

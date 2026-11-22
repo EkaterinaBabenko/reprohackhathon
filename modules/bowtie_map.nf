@@ -7,7 +7,7 @@
 process BOWTIE_MAP {
     tag "${sample}"                      // un process par échantillon : on voit lequel tourne
 
-    container 'bowtie:0.12.7'
+    container 'reprohack/bowtie-map:0.12.7'
 
     input:
     tuple val(sample), val(condition), path(reads)

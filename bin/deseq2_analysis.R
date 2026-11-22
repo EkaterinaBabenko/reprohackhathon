@@ -1,16 +1,14 @@
-#!/usr/bin/env Rscript
 # Expression différentielle persisters vs contrôles avec DESeq2.
 #
-# Usage : deseq2_analysis.R <counts.txt> <samples.csv> [padj]
-#   counts.txt  : sortie de featureCounts (colonnes Geneid, Name, Chr, Start, End, Strand,
-#                 Length, puis une colonne par fichier BAM/SAM)
-#   samples.csv : colonnes sample, condition, SRA_id
-#   padj        : seuil de p-value ajustée (défaut 0.05, valeur du papier)
+# Expression pour utiliser ce script R : deseq2_analysis.R <counts.txt> <samples.csv> [padj]
+#   counts.txt  : sortie de featureCounts (colonnes Geneid, Name, Chr, Start, End, Strand, Length, puis une colonne par fichier BAM/SAM)
+#   data/samples.csv : colonnes sample, condition, SRA_id
+#   padj : seuil de p-value ajustée (défaut 0.05, qui est la valeur du papier)
 #
 # Sorties (dossier courant) :
-#   deseq2_results.csv     : résultats pour tous les gènes (+ colonne `significant`)
-#   normalized_counts.csv  : comptages normalisés (facteurs de taille DESeq2)
-#   sessionInfo.txt        : versions de R et des packages
+#   deseq2_results.csv : résultats pour tous les gènes (+ colonne `significant`)
+#   normalized_counts.csv : comptages normalisés (facteurs de taille DESeq2)
+#   sessionInfo.txt : versions de R et des packages
 
 suppressPackageStartupMessages(library(DESeq2))
 

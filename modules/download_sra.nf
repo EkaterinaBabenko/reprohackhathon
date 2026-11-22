@@ -2,7 +2,7 @@ process DOWNLOAD_SRA {
     tag "${sample}.id"
     label 'process_medium'
 
-    container "staphb/sratoolkit"
+    container "reprohack/sratoolkit"
 
     input:
     tuple val(sample), val(condition), val(SRA_id)

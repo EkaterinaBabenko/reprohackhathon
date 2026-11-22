@@ -1,7 +1,7 @@
 
 process TRIMMING {
 
-    container "pipecraft/cutadapt:5.2-pc1.2.0"
+    container "reprohack/cutadapt:1.11"
 
     tag "${sample}.id"
 

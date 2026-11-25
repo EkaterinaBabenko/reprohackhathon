@@ -2,7 +2,7 @@ process DOWNLOAD_SRA {
     tag "${sample}.id"
     label 'process_medium'
 
-    container "reprohack/sratoolkit"
+    container "reprohack/sratoolkit:3.4.1"
 
     input:
     tuple val(sample), val(condition), val(SRA_id)
@@ -12,7 +12,7 @@ process DOWNLOAD_SRA {
 
     script:
     """
-    fasterq-dump --threads 4 --progress ${SRA_id}
+    fasterq-dump --progress ${SRA_id}
     gzip *.fastq
     """
 }

@@ -1,18 +1,8 @@
-// modules/download_ref.nf
-// Téléchargement du génome de référence souris et de son annotation (Projet 2, Hu et al. 2020).
-// Adapté de workflow-persister/modules/download_ref.nf : les URLs NCBI (S. aureus CP000253.1)
-// sont remplacées par les URLs Ensembl release 100, GRCm38 (consigne du projet, p.9) :
-//   - génome  : Mus_musculus.GRCm38.dna.toplevel.fa.gz  (~2.7 Gb compressé -> prévoir l'espace disque)
-//   - annotation : Mus_musculus.GRCm38.100.gff3.gz
-//
-// Entrée  : aucune
-// Sorties : path "reference.fasta"  (génome décompressé), emit: fasta -> BUILD_TRANSCRIPTOME
-//           path "reference.gff3"   (annotation décompressée), emit: gff   -> BUILD_TRANSCRIPTOME
 
 process DOWNLOAD_REF {
     label 'process_low'
 
-    container "staphb/sratoolkit"   // image déjà utilisée pour DOWNLOAD_SRA (contient wget)
+    container "${params.containers.sratoolkit}"   // même image que DOWNLOAD_SRA (contient wget) ; défini dans nextflow.config
 
     input:
 

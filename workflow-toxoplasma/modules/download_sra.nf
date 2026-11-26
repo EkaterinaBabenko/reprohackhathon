@@ -8,17 +8,17 @@ process DOWNLOAD_SRA {
     tag "${sample}"
     label 'process_medium'
 
-    container "staphb/sratoolkit"
+    container "${params.containers.sratoolkit}"   // défini dans nextflow.config
 
     input:
-    tuple val(sample), val(condition), val(timepoint), val(SRA_id)
+    tuple val(sample), val(condition), val(timepoint), val(SRR)
 
     output:
     tuple val(sample), val(condition), val(timepoint), path("*.fastq.gz"), emit: reads
 
     script:
     """
-    fasterq-dump --threads 4 --progress ${SRA_id}
+    fasterq-dump --threads ${task.cpus} --progress ${SRR}
     gzip *.fastq
     """
 }

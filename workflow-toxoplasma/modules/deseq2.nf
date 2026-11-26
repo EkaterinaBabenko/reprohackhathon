@@ -19,7 +19,7 @@ process DESEQ2 {
     tag "toxo_2x2"
     label 'process_medium'
 
-    container "deseq2:latest" // image locale, recette dans ../deseq2/Dockerfile (Projet 1)
+    container "${params.containers.deseq2}" // image locale, recette dans ../deseq2/Dockerfile (Projet 1) ; défini dans nextflow.config
 
     input:
     path quants   // dossiers <sample>/ contenant chacun quant.sf

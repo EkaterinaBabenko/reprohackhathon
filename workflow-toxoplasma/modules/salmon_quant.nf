@@ -1,4 +1,3 @@
-
 // HYPOTHÈSES :
 //   - lectures paired-end (confirmé : PRJNA483261 est en 2x lectures) -> -1/-2
 //   - type de librairie : -l A (détection automatique de l'orientation / strandedness)

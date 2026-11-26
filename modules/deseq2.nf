@@ -15,7 +15,7 @@ process DESEQ2 {
     tag "persisters_vs_controls"
     label 'process_medium'
 
-    container "deseq2:latest" // image locale, recette dans deseq2/Dockerfile
+    container "reprohack/deseq2:1.16" // image locale, recette dans deseq2/Dockerfile
 
     input:
     path counts // counts.txt (featureCounts)

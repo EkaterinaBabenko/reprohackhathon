@@ -15,7 +15,7 @@ include { BOWTIE_MAP } from "./modules/bowtie_map.nf"
 
 include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
-//include { DESEQ2 } from "./modules/deseq2.nf"
+include { DESEQ2 } from "./modules/deseq2.nf"
 
 
 /*

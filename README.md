@@ -33,7 +33,7 @@ Lectures SRA ──> Trimming ──> Mapping ──> Comptage par gène ──>
 | Index du génome | Bowtie 0.12.7 | `modules/bowtie_index.nf` |
 | Mapping | Bowtie 0.12.7 + samtools | `modules/bowtie_map.nf` |
 | Comptage | featureCounts 1.4.6-p3 (Subread) | `modules/featurecounts.nf` |
-| Expression différentielle | R 3.4.1 + DESeq2 1.16 | `modules/deseq2.nf` |
+| Expression différentielle | R 3.4.1 + DESeq2 1.16 (1.16.1, Bioconductor 3.5) | `modules/deseq2.nf` |
 
 Chaque étape s'exécute dans son propre conteneur (recettes dans `containers/`).
 
@@ -124,7 +124,7 @@ adaptateur, options de featureCounts, etc.) est noté et justifié dans le rappo
 | cutadapt | 1.11 | `containers/cutadapt/` |
 | Bowtie + samtools | 0.12.7 | `containers/bowtie/` |
 | Subread (featureCounts) | 1.4.6-p3 | `containers/subread/` |
-| R + DESeq2 | `TODO` | `containers/deseq2/` |
+| R + DESeq2 | R 3.4.1 + DESeq2 1.16.1 (Bioconductor 3.5, base `rocker/r-ver:3.4.1`) | `deseq2/Dockerfile` |
 
 `TODO` : indiquer comment construire les images (`docker build ...` ou `apptainer build ...`).
 

@@ -1,11 +1,9 @@
-
+// Données single-end
 process TRIMMING {
 
     container "pipecraft/cutadapt:5.2-pc1.2.0"
 
-    tag "${sample}.id"
-
-    label 'process_medium'
+    tag "${sample}"
 
     input:
     tuple val(sample), val(condition), path(reads)
@@ -15,6 +13,6 @@ process TRIMMING {
 
     script:
     """
-    cutadapt -q 20 -m 25 -a AGATCGGAAGAGC -o ${sample}.trimmed.fastq.gz ${reads}
+    cutadapt -q 20 -m 25 -a AGATCGGAAGAGC -j ${task.cpus} -o ${sample}.trimmed.fastq.gz ${reads}
     """
 }

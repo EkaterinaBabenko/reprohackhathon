@@ -12,6 +12,6 @@ process FEATURECOUNTS {
 
     script:
     """
-     featureCounts --extraAttributes Name -t gene -g ID -s 1 -F GTF -T 4 -a ${gff} -o counts.txt ${bams}
+     featureCounts --extraAttributes Name -t gene -g ID -s 1 -F GTF -T ${task.cpus} -a ${gff} -o counts.txt ${bams}
     """
 }

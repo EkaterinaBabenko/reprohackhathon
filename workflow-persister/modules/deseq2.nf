@@ -13,7 +13,6 @@
 
 process DESEQ2 {
     tag "persisters_vs_controls"
-    label 'process_medium'
 
     container "deseq2:latest" // image locale, recette dans deseq2/Dockerfile
 

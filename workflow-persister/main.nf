@@ -17,7 +17,6 @@ include { FEATURECOUNTS } from "./modules/featurecounts.nf"
 
 include { MA_PLOT } from "./modules/ma_plot.nf"
 
-//include { DESEQ2 } from "./modules/deseq2.nf"
 include { DESEQ2 } from "./modules/deseq2.nf"
 
 
@@ -27,6 +26,7 @@ include { DESEQ2 } from "./modules/deseq2.nf"
 
  params {
     samplesheet: Path
+    deseq2_padj: Float = 0.05 // seuil de p-value ajustée (comme dans l'article)
  }
 
  workflow {
@@ -63,9 +63,19 @@ include { DESEQ2 } from "./modules/deseq2.nf"
     counts = counts_ch.counts // counts array
     summary = counts_ch.summary // summary array
 
+    // Analyse d'expression différentielle
+    deseq2_ch = DESEQ2(counts, file(params.samplesheet))
+
+    // MA-plot
+    ma_ch = MA_PLOT(deseq2_ch.results)
+
     publish:
         counts_matrix = counts
         summary_matrix = summary
+        deseq2_results = deseq2_ch.results
+        normalized_counts = deseq2_ch.normalized
+        session_info = deseq2_ch.session_info
+        ma_plot = ma_ch.plot
 
  }
 
@@ -75,5 +85,17 @@ include { DESEQ2 } from "./modules/deseq2.nf"
     }
     summary_matrix {
         path { "FEATURECOUNTS" }
+    }
+    deseq2_results {
+        path { "DESEQ2" }
+    }
+    normalized_counts {
+        path { "DESEQ2" }
+    }
+    session_info {
+        path { "DESEQ2" }
+    }
+    ma_plot {
+        path { "MA_PLOT" }
     }
  }

@@ -12,7 +12,7 @@ process DOWNLOAD_SRA {
 
     script:
     """
-    fasterq-dump --threads 4 --progress ${SRA_id}
+    fasterq-dump --threads ${task.cpus} --progress ${SRA_id}
     gzip *.fastq
     """
 }

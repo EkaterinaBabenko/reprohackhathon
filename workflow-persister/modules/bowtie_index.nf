@@ -1,7 +1,6 @@
-// modules/bowtie_index.nf
-// Construction de l'index Bowtie (v0.12.7, Bowtie 1) à partir du génome de référence.
-// Entrée  : fasta du génome complet (S. aureus NCTC 8325, CP000253.1)
-// Sortie  : tuple (nom de l'index, fichiers *.ebwt), à passer au module bowtie_map
+// Construction de l'index Bowtie (v0.12.7, Bowtie 1) à partir du génome de référence
+// Entrée : fasta du génome complet (S. aureus NCTC 8325, CP000253.1)
+// Sortie : tuple (nom de l'index, fichiers *.ebwt), à passer au module bowtie_map
 
 process BOWTIE_INDEX {
     tag "${genome_fasta.simpleName}" // Affiche ce qui se passe dans le terminal quand c'est lancé

@@ -65,7 +65,7 @@ include { SALMON_QUANT }        from "./modules/salmon_quant.nf"
     //deseq2_ch = DESEQ2(quant_ch.quant.map { sample, condition, timepoint, quant_dir -> quant_dir }.collect(),
                        //channel.fromPath(params.samplesheet))
 
-    publish:
+    //publish:
         //det_d11 = deseq2_ch.det_d11
         //det_d33 = deseq2_ch.det_d33
         //results = deseq2_ch.results
@@ -74,17 +74,17 @@ include { SALMON_QUANT }        from "./modules/salmon_quant.nf"
  }
 
  output {
-    }
+    //}
     //det_d11 {
-        path { "DESEQ2" }
-    }
+        //path { "DESEQ2" }
+    //}
     //det_d33 {
         //path { "DESEQ2" }
-    }
+    //}
     //results {
         //path { "DESEQ2" }
-    }
+    //}
     //session_info {
         //path { "DESEQ2" }
-    }
+    //}
  }

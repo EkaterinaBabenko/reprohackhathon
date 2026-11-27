@@ -1,3 +1,9 @@
+// Nettoyage des lectures avec Trimmomatic v0.39 (outil de l'article Hu et al. 2020,
+// image staphb/trimmomatic:0.39).
+//
+// Entrée  : tuple (sample, condition, timepoint, *.fastq.gz)  <- DOWNLOAD_SRA
+// Sortie  : tuple (sample, condition, timepoint, *.trimmed.fastq.gz), emit: reads -> SALMON_QUANT
+//
 // HYPOTHÈSES :
 //   - lectures paired-end -> mode PE,
 //     on garde uniquement les reads appariés (fichiers *.unpaired supprimés).

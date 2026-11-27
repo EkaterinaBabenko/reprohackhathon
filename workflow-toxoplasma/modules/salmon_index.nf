@@ -1,4 +1,9 @@
-
+// Construction de l'index Salmon.
+// Quantifie avec Salmon (sans aligneur).
+//
+// Entrée  : path transcripts.fa (cDNA)              <- BUILD_TRANSCRIPTOME
+// Sortie  : path "salmon_index" (dossier d'index), emit: index -> SALMON_QUANT
+//
 // HYPOTHÈSE : k-mère de 31 (valeur par défaut de Salmon,
 // recommandée pour des lectures >= 75 nt) et index de type "quasi" (quasi-mapping).
 

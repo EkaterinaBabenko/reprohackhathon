@@ -1,3 +1,10 @@
+// Quantification des lectures trimmées par échantillon avec Salmon (comptages par transcrit).
+//
+// Entrées : - tuple (sample, condition, timepoint, reads trimmés)  <- TRIMMING
+//           - path "salmon_index"                                 <- SALMON_INDEX
+// Sortie  : tuple (sample, condition, timepoint, dossier <sample>/ contenant quant.sf),
+//           emit: quant -> DESEQ2
+//
 // HYPOTHÈSES :
 //   - lectures paired-end (confirmé : PRJNA483261 est en 2x lectures) -> -1/-2
 //   - type de librairie : -l A (détection automatique de l'orientation / strandedness)

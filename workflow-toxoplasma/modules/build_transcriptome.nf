@@ -1,7 +1,5 @@
-// modules/build_transcriptome.nf
-// Construction du transcriptome (fasta cDNA) à partir du génome et de l'annotation GFF3..
-//
-// Outil : gffread (extrait les séquences des transcrits à partir du génome + GFF3).
+// Construction du transcriptome (fasta cDNA) à partir du génome et de l'annotation,
+// avec gffread.
 //
 // Entrées : - reference.fasta (génome GRCm38)  <- DOWNLOAD_REF.fasta
 //           - reference.gff3  (annotation)      <- DOWNLOAD_REF.gff

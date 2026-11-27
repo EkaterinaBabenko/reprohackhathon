@@ -5,7 +5,7 @@
 // Sortie  : path "salmon_index" (dossier d'index), emit: index -> SALMON_QUANT
 //
 // HYPOTHÈSE : k-mère de 31 (valeur par défaut de Salmon,
-// recommandée pour des lectures >= 75 nt) et index de type "quasi" (quasi-mapping).
+// recommandée pour des lectures >= 75 nt).
 
 process SALMON_INDEX {
     tag "salmon_index"
@@ -21,6 +21,6 @@ process SALMON_INDEX {
 
     script:
     """
-    salmon index -t ${transcriptome} -i salmon_index --type quasi -k 31
+    salmon index -t ${transcriptome} -i salmon_index -k 31
     """
 }

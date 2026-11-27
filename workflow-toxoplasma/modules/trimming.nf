@@ -25,11 +25,14 @@ process TRIMMING {
     script:
     // Le jar Trimmomatic est localisé dans l'image (chemin standard biocontainers/Damona)
     def jar = '/Trimmomatic-0.39/trimmomatic-0.39.jar'
+    // Basenames des entrées (ex. SRR7657878_1.fastq.gz -> SRR7657878_1), calculés en Groovy
+    def B1 = reads[0].name.replace('.fastq.gz', '')
+    def B2 = reads[1].name.replace('.fastq.gz', '')
     """
     java -jar ${jar} PE -threads ${task.cpus} \\
         ${reads[0]} ${reads[1]} \\
-        ${sample}.trimmed.fastq.gz ${sample}.unpaired.fastq.gz \\
-        ${sample}.trimmed.fastq.gz ${sample}.unpaired.fastq.gz \\
+        ${B1}.trimmed.fastq.gz ${B1}.unpaired.fastq.gz \\
+        ${B2}.trimmed.fastq.gz ${B2}.unpaired.fastq.gz \\
         ILLUMINACLIP:/Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa:2:30:10 \\
         SLIDINGWINDOW:4:20 MINLEN:25
 

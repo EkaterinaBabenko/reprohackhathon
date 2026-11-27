@@ -8,7 +8,7 @@
 // Expression pour utiliser le script R : deseq2_analysis.R <counts.txt> <samples.csv> [padj]
 // Le script bin/deseq2_analysis.R est automatiquement dans le PATH du process
 // (Nextflow ajoute le dossier bin/ du projet).
-// L'image doit être construite à partir de deseq2/Dockerfile (R + DESeq2) :
+// L'image doit être construite à partir de deseq2/Dockerfile (R 3.4.1 + DESeq2 1.16.1, comme le papier) :
 //   docker build -t deseq2:latest deseq2/
 
 process DESEQ2 {

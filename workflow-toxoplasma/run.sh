@@ -6,8 +6,16 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+TRIMMOMATIC_IMAGE_URL="https://zenodo.org/records/22145522/files/trimmomatic_0.39.0.img?download=1"
+TRIMMOMATIC_IMAGE="containers/trimmomatic_0.39.0.img"
 SALMON_IMAGE_URL="https://zenodo.org/records/22144681/files/salmon_1.2.0.img?download=1"
 SALMON_IMAGE="containers/salmon_1.2.0.img"
+
+if [ ! -f "$TRIMMOMATIC_IMAGE" ]; then
+    echo "Téléchargement de l'image Trimmomatic 0.39.0 depuis Zenodo..."
+    mkdir -p containers
+    wget -q "$TRIMMOMATIC_IMAGE_URL" -O "$TRIMMOMATIC_IMAGE"
+fi
 
 if [ ! -f "$SALMON_IMAGE" ]; then
     echo "Téléchargement de l'image Salmon 1.2.0 depuis Zenodo..."
@@ -15,4 +23,4 @@ if [ ! -f "$SALMON_IMAGE" ]; then
     wget -q "$SALMON_IMAGE_URL" -O "$SALMON_IMAGE"
 fi
 
-nextflow run main.nf -profile apptainer "$@"
+nextflow run main.nf "$@"

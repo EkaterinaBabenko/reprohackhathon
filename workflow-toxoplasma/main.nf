@@ -21,7 +21,8 @@ include { DOWNLOAD_REF }        from "./modules/download_ref.nf"
 include { BUILD_TRANSCRIPTOME } from "./modules/build_transcriptome.nf"
 include { SALMON_INDEX }        from "./modules/salmon_index.nf"
 include { SALMON_QUANT }        from "./modules/salmon_quant.nf"
-//include { DESEQ2 }              from "./modules/deseq2.nf"
+include { DESEQ2 }              from "./modules/deseq2.nf"
+include { VENN }                from "./modules/venn.nf"
 
 
 /*
@@ -62,29 +63,40 @@ include { SALMON_QUANT }        from "./modules/salmon_quant.nf"
     quant_ch = SALMON_QUANT(trimmed_ch.reads, salmon_index)
 
     // differential transcript expression (DESeq2 on quant.sf, design 2x2)
-    //deseq2_ch = DESEQ2(quant_ch.quant.map { sample, condition, timepoint, quant_dir -> quant_dir }.collect(),
-                       //channel.fromPath(params.samplesheet))
+    deseq2_ch = DESEQ2(quant_ch.quant.map { sample, condition, timepoint, quant_dir -> quant_dir }.collect(),
+                       channel.fromPath(params.samplesheet))
 
-    //publish:
-        //det_d11 = deseq2_ch.det_d11
-        //det_d33 = deseq2_ch.det_d33
-        //results = deseq2_ch.results
-        //session_info = deseq2_ch.session_info
+    // Venn diagram of DETs d11 vs d33 (Fig. 2B)
+    venn_ch = VENN(deseq2_ch.det_d11, deseq2_ch.det_d33)
+
+    publish:
+        det_d11 = deseq2_ch.det_d11
+        det_d33 = deseq2_ch.det_d33
+        results = deseq2_ch.results
+        session_info = deseq2_ch.session_info
+        venn_counts = venn_ch.counts
+        venn_plot = venn_ch.plot_png
 
  }
 
  output {
-    //}
-    //det_d11 {
-        //path { "DESEQ2" }
-    //}
-    //det_d33 {
-        //path { "DESEQ2" }
-    //}
-    //results {
-        //path { "DESEQ2" }
-    //}
-    //session_info {
-        //path { "DESEQ2" }
-    //}
+    }
+    det_d11 {
+        path { "DESEQ2" }
+    }
+    det_d33 {
+        path { "DESEQ2" }
+    }
+    results {
+        path { "DESEQ2" }
+    }
+    session_info {
+        path { "DESEQ2" }
+    }
+    venn_counts {
+        path { "VENN" }
+    }
+    venn_plot {
+        path { "VENN" }
+    }
  }

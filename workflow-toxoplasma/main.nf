@@ -80,7 +80,6 @@ include { VENN }                from "./modules/venn.nf"
  }
 
  output {
-    }
     det_d11 {
         path { "DESEQ2" }
     }

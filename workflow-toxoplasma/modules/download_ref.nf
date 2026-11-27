@@ -4,8 +4,6 @@ process DOWNLOAD_REF {
 
     container "${params.containers.sratoolkit}"   // même image que DOWNLOAD_SRA (contient wget) ; défini dans nextflow.config
 
-    input:
-
     output:
     path "reference.fasta", emit: fasta
     path "reference.gff3",  emit: gff

@@ -18,9 +18,10 @@ process SALMON_QUANT {
 
     script:
     """
-    # Paired-end : on passe les deux fichiers trimmés à Salmon
+    # Paired-end : ${reads} = les 2 fichiers *.trimmed.fastq.gz produits par TRIMMING
+    # (staged dans le work dir, ordre alphabétique : _1 avant _2)
     salmon quant -i ${index} -l A \\
-        -1 ${sample}_1.trimmed.fastq.gz -2 ${sample}_2.trimmed.fastq.gz \\
+        -1 ${reads[0]} -2 ${reads[1]} \\
         -p ${task.cpus} -o ${sample} --validateMappings
     """
 }

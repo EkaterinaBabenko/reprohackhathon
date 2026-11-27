@@ -45,7 +45,10 @@ etiquettes$nom <- noms_trouves[match(etiquettes$gene, ids_cibles)]
 traduction <- res[res$gene %in% c(ids_traduction, ids_cibles), ]
 cat("Gènes tracés :", nrow(traduction), "(attendu : environ 153 + 6)\n")
 
-# Graphique
+
+
+# Production du MA-plot réduit
+
 couleurs <- c("Non-significatif" = "grey50", "Significatif" = "#E8352B")
 
 p <- ggplot(traduction, aes(x = log2baseMean, y = log2FoldChange)) +
@@ -88,3 +91,33 @@ p <- ggplot(traduction, aes(x = log2baseMean, y = log2FoldChange)) +
 
 print(p)
 ggsave("ma_plot.png", p, width = 8, height = 5, dpi = 300)
+
+
+
+
+
+# Production du MA-plot du jeu de données RNA-seq complet
+
+# On reproduit les triangles (valeurs sur y qui dépassent 4)
+res$depasse  <- abs(res$log2FoldChange) > 4
+res$lfc_trace <- pmax(pmin(res$log2FoldChange, 4), -4)
+
+# significatifs : points noirs, sinon points rouges
+res_tout <- res[order(res$Significatif), ]
+
+p2 <- ggplot(res_tout, aes(x = baseMean, y = lfc_trace)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "grey40") +
+  geom_point(aes(color = Significatif, shape = depasse), size = 0.8) +
+  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "#E8352B")) +
+  scale_shape_manual(values = c("FALSE" = 16, "TRUE" = 17)) +
+  scale_x_log10(breaks = 10^c(0, 2, 4),
+                labels = expression(10^0, 10^2, 10^4)) +
+  scale_y_continuous(breaks = c(-4, -2, 0, 2, 4)) +
+  labs(x = "Mean of normalized counts",
+       y = expression(log[2]~fold~change)) +
+  theme_gray(base_size = 12) +
+  theme(legend.position = "none",
+        panel.grid.minor = element_blank())
+
+print(p2)
+ggsave("total_plot.png", p2, width = 8, height = 5, dpi = 300)

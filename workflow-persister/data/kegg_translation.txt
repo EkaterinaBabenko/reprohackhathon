@@ -1,0 +1,320 @@
+09122 Translation
+     03010 Ribosome [PATH:sao03010]
+       SAOUHSC_R0001 16S Ribosomal RNA
+       SAOUHSC_R0002 16S Ribosomal RNA
+       SAOUHSC_R0003 16S Ribosomal RNA
+       SAOUHSC_R0004 16S Ribosomal RNA
+       SAOUHSC_R0005 16S Ribosomal RNA
+       SAOUHSC_R00010 23S Ribosomal RNA
+       SAOUHSC_R0006 23S Ribosomal RNA
+       SAOUHSC_R0007 23S Ribosomal RNA
+       SAOUHSC_R0008 23S Ribosomal RNA
+       SAOUHSC_R0009 23S Ribosomal RNA
+       SAOUHSC_R00011 5S Ribosomal RNA
+       SAOUHSC_R00012 5S Ribosomal RNA
+       SAOUHSC_R00013 5S Ribosomal RNA
+       SAOUHSC_R00014 5S Ribosomal RNA
+       SAOUHSC_R00015 5S Ribosomal RNA
+       SAOUHSC_R00016 5S Ribosomal RNA
+       SAOUHSC_01493 rpsA; 30S ribosomal protein S1
+       SAOUHSC_02506 rpsC; 30S ribosomal protein S3
+       SAOUHSC_01829 rpsD; 30S ribosomal protein S4
+       SAOUHSC_02494 rpsE; 30S ribosomal protein S5
+       SAOUHSC_00348 rpsF; 30S ribosomal protein S6
+       SAOUHSC_00528 30S ribosomal protein S7
+       SAOUHSC_02498 rpsH; 30S ribosomal protein S8
+       SAOUHSC_02477 rpsI; 30S ribosomal protein S9
+       SAOUHSC_02512a 30S ribosomal protein S10
+       SAOUHSC_02486 30S ribosomal protein S11
+       SAOUHSC_00527 rpsL; 30S ribosomal protein S12
+       SAOUHSC_02487 rpsM; 30S ribosomal protein S13
+       SAOUHSC_01329 rpsN; 30S ribosomal protein S14
+       SAOUHSC_02499 rpsN; 30S ribosomal protein S14
+       SAOUHSC_01250 rpsO; 30S ribosomal protein S15
+       SAOUHSC_01208 rpsP; 30S ribosomal protein S16
+       SAOUHSC_02503 rpsQ; 30S ribosomal protein S17
+       SAOUHSC_00350 rpsR; 30S ribosomal protein S18
+       SAOUHSC_02508 rpsS; 30S ribosomal protein S19
+       SAOUHSC_01689 rpsT; 30S ribosomal protein S20
+       SAOUHSC_01678 rpsU; 30S ribosomal protein S21
+       SAOUHSC_00519 rplA; 50S ribosomal protein L1
+       SAOUHSC_02509 rplB; 50S ribosomal protein L2
+       SAOUHSC_02512 rplC; 50S ribosomal protein L3
+       SAOUHSC_02511 rplD; 50S ribosomal protein L4
+       SAOUHSC_02500 rplE; 50S ribosomal protein L5
+       SAOUHSC_02496 rplF; 50S ribosomal protein L6
+       SAOUHSC_00526 50S ribosomal protein L7Ae-like protein
+       SAOUHSC_00017 rplI; 50S ribosomal protein L9
+       SAOUHSC_00520 rplJ; 50S ribosomal protein L10
+       SAOUHSC_00518 rplK; 50S ribosomal protein L11
+       SAOUHSC_00521 rplL; 50S ribosomal protein L7/L12
+       SAOUHSC_02478 rplM; 50S ribosomal protein L13
+       SAOUHSC_02502 rplN; 50S ribosomal protein L14
+       SAOUHSC_02492 rplO; 50S ribosomal protein L15
+       SAOUHSC_02505 rplP; 50S ribosomal protein L16
+       SAOUHSC_02484 rplQ; 50S ribosomal protein L17
+       SAOUHSC_02495 rplR; 50S ribosomal protein L18
+       SAOUHSC_01211 rplS; 50S ribosomal protein L19
+       SAOUHSC_01784 rplT; 50S ribosomal protein L20
+       SAOUHSC_01757 rplU; 50S ribosomal protein L21
+       SAOUHSC_02507 rplV; 50S ribosomal protein L22
+       SAOUHSC_02510 rplW; 50S ribosomal protein L23
+       SAOUHSC_02501 rplX; 50S ribosomal protein L24
+       SAOUHSC_00474 50S ribosomal protein L25/general stress protein Ctc
+       SAOUHSC_01755 rpmA; 50S ribosomal protein L27
+       SAOUHSC_01191 rpmB; 50S ribosomal protein L28
+       SAOUHSC_02504 50S ribosomal protein L29
+       SAOUHSC_02493 rpmD; 50S ribosomal protein L30
+       SAOUHSC_02361 rpmE2; 50S ribosomal protein L31 type B
+       SAOUHSC_01328 rpmG; 50S ribosomal protein L33
+       SAOUHSC_01651 rpmG; 50S ribosomal protein L33
+       SAOUHSC_03055 rpmH; 50S ribosomal protein L34
+       SAOUHSC_01785 rpmI; 50S ribosomal protein L35
+       SAOUHSC_02488 rpmJ; 50S ribosomal protein L36
+K01977 16SrRNA; 16S ribosomal RNA
+K01977 16SrRNA; 16S ribosomal RNA
+K01977 16SrRNA; 16S ribosomal RNA
+K01977 16SrRNA; 16S ribosomal RNA
+K01977 16SrRNA; 16S ribosomal RNA
+K01980 23SrRNA; 23S ribosomal RNA
+K01980 23SrRNA; 23S ribosomal RNA
+K01980 23SrRNA; 23S ribosomal RNA
+K01980 23SrRNA; 23S ribosomal RNA
+K01980 23SrRNA; 23S ribosomal RNA
+K01985 5SrRNA; 5S ribosomal RNA
+K01985 5SrRNA; 5S ribosomal RNA
+K01985 5SrRNA; 5S ribosomal RNA
+K01985 5SrRNA; 5S ribosomal RNA
+K01985 5SrRNA; 5S ribosomal RNA
+K01985 5SrRNA; 5S ribosomal RNA
+K02945 RP-S1; small subunit ribosomal protein S1
+K02982 RP-S3; small subunit ribosomal protein S3
+K02986 RP-S4; small subunit ribosomal protein S4
+K02988 RP-S5; small subunit ribosomal protein S5
+K02990 RP-S6; small subunit ribosomal protein S6
+K02992 RP-S7; small subunit ribosomal protein S7
+K02994 RP-S8; small subunit ribosomal protein S8
+K02996 RP-S9; small subunit ribosomal protein S9
+K02946 RP-S10; small subunit ribosomal protein S10
+K02948 RP-S11; small subunit ribosomal protein S11
+K02950 RP-S12; small subunit ribosomal protein S12
+K02952 RP-S13; small subunit ribosomal protein S13
+K02954 RP-S14; small subunit ribosomal protein S14
+K02954 RP-S14; small subunit ribosomal protein S14
+K02956 RP-S15; small subunit ribosomal protein S15
+K02959 RP-S16; small subunit ribosomal protein S16
+K02961 RP-S17; small subunit ribosomal protein S17
+K02963 RP-S18; small subunit ribosomal protein S18
+K02965 RP-S19; small subunit ribosomal protein S19
+K02968 RP-S20; small subunit ribosomal protein S20
+K02970 RP-S21; small subunit ribosomal protein S21
+K02863 RP-L1; large subunit ribosomal protein L1
+K02886 RP-L2; large subunit ribosomal protein L2
+K02906 RP-L3; large subunit ribosomal protein L3
+K02926 RP-L4; large subunit ribosomal protein L4
+K02931 RP-L5; large subunit ribosomal protein L5
+K02933 RP-L6; large subunit ribosomal protein L6
+K07590 RP-L7A; large subunit ribosomal protein L7A
+K02939 RP-L9; large subunit ribosomal protein L9
+K02864 RP-L10; large subunit ribosomal protein L10
+K02867 RP-L11; large subunit ribosomal protein L11
+K02935 RP-L7; large subunit ribosomal protein L7/L12
+K02871 RP-L13; large subunit ribosomal protein L13
+K02874 RP-L14; large subunit ribosomal protein L14
+K02876 RP-L15; large subunit ribosomal protein L15
+K02878 RP-L16; large subunit ribosomal protein L16
+K02879 RP-L17; large subunit ribosomal protein L17
+K02881 RP-L18; large subunit ribosomal protein L18
+K02884 RP-L19; large subunit ribosomal protein L19
+K02887 RP-L20; large subunit ribosomal protein L20
+K02888 RP-L21; large subunit ribosomal protein L21
+K02890 RP-L22; large subunit ribosomal protein L22
+K02892 RP-L23; large subunit ribosomal protein L23
+K02895 RP-L24; large subunit ribosomal protein L24
+K02897 RP-L25; large subunit ribosomal protein L25
+K02899 RP-L27; large subunit ribosomal protein L27
+K02902 RP-L28; large subunit ribosomal protein L28
+K02904 RP-L29; large subunit ribosomal protein L29
+K02907 RP-L30; large subunit ribosomal protein L30
+K02909 RP-L31; large subunit ribosomal protein L31
+K02913 RP-L33; large subunit ribosomal protein L33
+K02913 RP-L33; large subunit ribosomal protein L33
+K02914 RP-L34; large subunit ribosomal protein L34
+K02916 RP-L35; large subunit ribosomal protein L35
+K02919 RP-L36; large subunit ribosomal protein L36
+     00970 Aminoacyl-tRNA biosynthesis [PATH:sao00970]
+       SAOUHSC_T0001 tRNA-Ala
+       SAOUHSC_T0002 tRNA-Ala
+       SAOUHSC_T0003 tRNA-Ala
+       SAOUHSC_T0004 tRNA-Arg
+       SAOUHSC_T0005 tRNA-Arg
+       SAOUHSC_T0006 tRNA-Arg
+       SAOUHSC_T0007 tRNA-Arg
+       SAOUHSC_T00010 tRNA-Asn
+       SAOUHSC_T0008 tRNA-Asn
+       SAOUHSC_T0009 tRNA-Asn
+       SAOUHSC_T00011 tRNA-Asp
+       SAOUHSC_T00012 tRNA-Asp
+       SAOUHSC_T00013 tRNA-Asp
+       SAOUHSC_T00014 tRNA-Asp
+       SAOUHSC_T00015 tRNA-Cys
+       SAOUHSC_T00016 tRNA-Gln
+       SAOUHSC_T00017 tRNA-Gln
+       SAOUHSC_T00018 tRNA-Glu
+       SAOUHSC_T00019 tRNA-Glu
+       SAOUHSC_T00020 tRNA-Glu
+       SAOUHSC_T00021 tRNA-Gly
+       SAOUHSC_T00022 tRNA-Gly
+       SAOUHSC_T00023 tRNA-Gly
+       SAOUHSC_T00024 tRNA-Gly
+       SAOUHSC_T00025 tRNA-Gly
+       SAOUHSC_T00046 pseudogene
+       SAOUHSC_T00047 pseudogene
+       SAOUHSC_T00026 tRNA-His
+       SAOUHSC_T00027 tRNA-His
+       SAOUHSC_T00028 tRNA-Ile
+       SAOUHSC_T00029 tRNA-Ile
+       SAOUHSC_T00030 tRNA-Leu
+       SAOUHSC_T00031 tRNA-Leu
+       SAOUHSC_T00032 tRNA-Leu
+       SAOUHSC_T00033 tRNA-Leu
+       SAOUHSC_T00034 tRNA-Leu
+       SAOUHSC_T00035 tRNA-Lys
+       SAOUHSC_T00036 tRNA-Lys
+       SAOUHSC_T00037 tRNA-Lys
+       SAOUHSC_T00038 tRNA-Met
+       SAOUHSC_T00039 tRNA-Met
+       SAOUHSC_T00040 tRNA-Met
+       SAOUHSC_T00041 tRNA-Met
+       SAOUHSC_T00042 tRNA-Phe
+       SAOUHSC_T00043 tRNA-Phe
+       SAOUHSC_T00044 tRNA-Pro
+       SAOUHSC_T00045 tRNA-Pro
+       SAOUHSC_T00048 tRNA-Ser
+       SAOUHSC_T00049 tRNA-Ser
+       SAOUHSC_T00050 tRNA-Ser
+       SAOUHSC_T00051 tRNA-Ser
+       SAOUHSC_T00052 tRNA-Ser
+       SAOUHSC_T00053 tRNA-Thr
+       SAOUHSC_T00054 tRNA-Thr
+       SAOUHSC_T00055 tRNA-Thr
+       SAOUHSC_T00056 tRNA-Trp
+       SAOUHSC_T00057 tRNA-Tyr
+       SAOUHSC_T00058 tRNA-Tyr
+       SAOUHSC_T00059 tRNA-Val
+       SAOUHSC_T00060 tRNA-Val
+       SAOUHSC_T00061 tRNA-Val
+       SAOUHSC_00509 gltX; glutamyl-tRNA synthetase
+       SAOUHSC_02117 gatA; aspartyl/glutamyl-tRNA amidotransferase subunit A
+       SAOUHSC_02116 gatB; aspartyl/glutamyl-tRNA amidotransferase subunit B
+       SAOUHSC_02118 gatC; aspartyl/glutamyl-tRNA amidotransferase subunit C
+       SAOUHSC_01722 alaS; alanyl-tRNA synthetase
+       SAOUHSC_01737 aspS; aspartyl-tRNA synthetase
+       SAOUHSC_01471 asnC; asparaginyl-tRNA synthetase
+       SAOUHSC_01666 glycyl-tRNA synthetase
+       SAOUHSC_01788 thrS; threonyl-tRNA synthetase
+       SAOUHSC_00009 seryl-tRNA synthetase
+       SAOUHSC_00511 cysS; cysteinyl-tRNA synthetase
+       SAOUHSC_00461 methionyl-tRNA synthetase
+       SAOUHSC_01183 methionyl-tRNA formyltransferase
+       SAOUHSC_01767 valS; valyl-tRNA synthetase
+       SAOUHSC_01875 leuS; leucyl-tRNA synthetase
+       SAOUHSC_01159 ileS; isoleucyl-tRNA synthetase
+       SAOUHSC_00493 lysS; lysyl-tRNA synthetase
+       SAOUHSC_00611 argS; arginyl-tRNA synthetase
+       SAOUHSC_01240 prolyl-tRNA synthetase
+       SAOUHSC_01738 hisS; histidyl-tRNA synthetase
+       SAOUHSC_01092 pheS; phenylalanyl-tRNA synthetase subunit alpha
+       SAOUHSC_01093 pheT; phenylalanyl-tRNA synthetase subunit beta
+       SAOUHSC_01839 tyrosyl-tRNA synthetase
+       SAOUHSC_00933 tryptophanyl-tRNA synthetase
+K14218 tRNA-Ala; tRNA Ala
+K14218 tRNA-Ala; tRNA Ala
+K14218 tRNA-Ala; tRNA Ala
+K14219 tRNA-Arg; tRNA Arg
+K14219 tRNA-Arg; tRNA Arg
+K14219 tRNA-Arg; tRNA Arg
+K14219 tRNA-Arg; tRNA Arg
+K14220 tRNA-Asn; tRNA Asn
+K14220 tRNA-Asn; tRNA Asn
+K14220 tRNA-Asn; tRNA Asn
+K14221 tRNA-Asp; tRNA Asp
+K14221 tRNA-Asp; tRNA Asp
+K14221 tRNA-Asp; tRNA Asp
+K14221 tRNA-Asp; tRNA Asp
+K14222 tRNA-Cys; tRNA Cys
+K14223 tRNA-Gln; tRNA Gln
+K14223 tRNA-Gln; tRNA Gln
+K14224 tRNA-Glu; tRNA Glu
+K14224 tRNA-Glu; tRNA Glu
+K14224 tRNA-Glu; tRNA Glu
+K14225 tRNA-Gly; tRNA Gly
+K14225 tRNA-Gly; tRNA Gly
+K14225 tRNA-Gly; tRNA Gly
+K14225 tRNA-Gly; tRNA Gly
+K14225 tRNA-Gly; tRNA Gly
+K14225 tRNA-Gly; tRNA Gly
+K14225 tRNA-Gly; tRNA Gly
+K14226 tRNA-His; tRNA His
+K14226 tRNA-His; tRNA His
+K14227 tRNA-Ile; tRNA Ile
+K14227 tRNA-Ile; tRNA Ile
+K14228 tRNA-Leu; tRNA Leu
+K14228 tRNA-Leu; tRNA Leu
+K14228 tRNA-Leu; tRNA Leu
+K14228 tRNA-Leu; tRNA Leu
+K14228 tRNA-Leu; tRNA Leu
+K14229 tRNA-Lys; tRNA Lys
+K14229 tRNA-Lys; tRNA Lys
+K14229 tRNA-Lys; tRNA Lys
+K14230 tRNA-Met; tRNA Met
+K14230 tRNA-Met; tRNA Met
+K14230 tRNA-Met; tRNA Met
+K14230 tRNA-Met; tRNA Met
+K14231 tRNA-Phe; tRNA Phe
+K14231 tRNA-Phe; tRNA Phe
+K14232 tRNA-Pro; tRNA Pro
+K14232 tRNA-Pro; tRNA Pro
+K14233 tRNA-Ser; tRNA Ser
+K14233 tRNA-Ser; tRNA Ser
+K14233 tRNA-Ser; tRNA Ser
+K14233 tRNA-Ser; tRNA Ser
+K14233 tRNA-Ser; tRNA Ser
+K14234 tRNA-Thr; tRNA Thr
+K14234 tRNA-Thr; tRNA Thr
+K14234 tRNA-Thr; tRNA Thr
+K14235 tRNA-Trp; tRNA Trp
+K14236 tRNA-Tyr; tRNA Tyr
+K14236 tRNA-Tyr; tRNA Tyr
+K14237 tRNA-Val; tRNA Val
+K14237 tRNA-Val; tRNA Val
+K14237 tRNA-Val; tRNA Val
+K09698 gltX; nondiscriminating glutamyl-tRNA synthetase [EC:6.1.1.24]
+K02433 gatA; aspartyl-tRNA(Asn)/glutamyl-tRNA(Gln) amidotransferase subunit A [EC:6.3.5.6 6.3.5.7]
+K02434 gatB; aspartyl-tRNA(Asn)/glutamyl-tRNA(Gln) amidotransferase subunit B [EC:6.3.5.6 6.3.5.7]
+K02435 gatC; aspartyl-tRNA(Asn)/glutamyl-tRNA(Gln) amidotransferase subunit C [EC:6.3.5.6 6.3.5.7]
+K01872 AARS; alanyl-tRNA synthetase [EC:6.1.1.7]
+K01876 DARS2; aspartyl-tRNA synthetase [EC:6.1.1.12]
+K01893 NARS; asparaginyl-tRNA synthetase [EC:6.1.1.22]
+K01880 GARS; glycyl-tRNA synthetase [EC:6.1.1.14]
+K01868 TARS; threonyl-tRNA synthetase [EC:6.1.1.3]
+K01875 SARS; seryl-tRNA synthetase [EC:6.1.1.11]
+K01883 CARS; cysteinyl-tRNA synthetase [EC:6.1.1.16]
+K01874 MARS; methionyl-tRNA synthetase [EC:6.1.1.10]
+K00604 MTFMT; methionyl-tRNA formyltransferase [EC:2.1.2.9]
+K01873 VARS; valyl-tRNA synthetase [EC:6.1.1.9]
+K01869 LARS; leucyl-tRNA synthetase [EC:6.1.1.4]
+K01870 IARS; isoleucyl-tRNA synthetase [EC:6.1.1.5]
+K04567 KARS; lysyl-tRNA synthetase, class II [EC:6.1.1.6]
+K01887 RARS; arginyl-tRNA synthetase [EC:6.1.1.19]
+K01881 PARS; prolyl-tRNA synthetase [EC:6.1.1.15]
+K01892 HARS; histidyl-tRNA synthetase [EC:6.1.1.21]
+K01889 FARSA; phenylalanyl-tRNA synthetase alpha chain [EC:6.1.1.20]
+K01890 FARSB; phenylalanyl-tRNA synthetase beta chain [EC:6.1.1.20]
+K01866 YARS; tyrosyl-tRNA synthetase [EC:6.1.1.1]
+K01867 WARS; tryptophanyl-tRNA synthetase [EC:6.1.1.2]
+     03013 Nucleocytoplasmic transport
+     03015 mRNA surveillance pathway
+     03008 Ribosome biogenesis in eukaryotes
+       SAOUHSC_01203 rnc; ribonuclease III
+K03685 rnc; ribonuclease III [EC:3.1.26.3]

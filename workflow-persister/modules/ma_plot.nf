@@ -1,23 +1,31 @@
-// MA-plot des résultats DESeq2 (bin/ma_plots.R, dans le PATH du process)
+// Production du MA-plot (figure c de l'article) à partir de la sortie de DESeq2.
+// Entrées : deseq2_results.csv
+// Sorties : ma_plot.png
+
+// Appel du script R : ma_plot.R
+
 process MA_PLOT {
     tag "ma_plot"
-
-    container "deseq2:latest" // même image que DESEQ2 (R)
+    label 'process_low'
+    container "deseq2:latest"
 
     input:
-    path results // deseq2_results.csv
+    path results
+    path kegg_file
 
     output:
-    path "ma_plot.png", emit: plot
+    path "ma_plot.png",    emit: ma_plot
+    path "total_plot.png", emit: total_plot
 
     script:
     def padj = params.deseq2_padj ?: 0.05
     """
-    ma_plots.R ${results} ${padj}
+    ma_plot.R ${results} ${padj} ${kegg_file}
     """
 
     stub:
     """
     touch ma_plot.png
+    touch total_plot.png
     """
 }

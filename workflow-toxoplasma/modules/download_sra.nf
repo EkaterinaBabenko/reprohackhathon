@@ -1,5 +1,6 @@
 // modules/download_sra.nf
-// Téléchargement des lectures brutes SRA avec fasterq-dump (SRA Toolkit), puis gzip.
+// Téléchargement des lectures brutes SRA avec fasterq-dump (SRA Toolkit), puis compression
+// parallélisée avec pigz (-p = tous les cpus alloués au process).
 
 // Entrée  : tuple (sample, condition, timepoint, SRA_id)   <- lecture du samples.csv
 // Sortie  : tuple (sample, condition, timepoint, *.fastq.gz), emit: reads -> TRIMMING
@@ -19,6 +20,6 @@ process DOWNLOAD_SRA {
     script:
     """
     fasterq-dump --threads ${task.cpus} --progress ${SRR}
-    gzip *.fastq
+    pigz -p ${task.cpus} *.fastq
     """
 }

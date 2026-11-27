@@ -1,8 +1,5 @@
 // modules/build_transcriptome.nf
-// Construction du transcriptome (fasta cDNA) à partir du génome et de l'annotation GFF3,
-// étape requise avant l'indexation Salmon (consigne : "Build a transcriptome (cDNA) fasta
-// from the genome + annotation"). Nouveau module, sans équivalent dans le Projet 1
-// (qui utilisait Bowtie + featureCounts directement sur le génome).
+// Construction du transcriptome (fasta cDNA) à partir du génome et de l'annotation GFF3..
 //
 // Outil : gffread (extrait les séquences des transcrits à partir du génome + GFF3).
 //

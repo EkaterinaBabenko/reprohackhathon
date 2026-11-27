@@ -1,19 +1,3 @@
-// modules/deseq2.nf
-// Analyse d'expression différentielle des transcrits (Projet 2) avec DESeq2.
-// Adapté de workflow-persister/modules/deseq2.nf : l'entrée n'est plus le counts.txt
-// de featureCounts mais l'ensemble des quant.sf de Salmon (comptages par transcrit),
-// et les seuils sont ceux de l'article de Hu et al. 2020 (p < 0.05 non ajustée,
-// |log2FC| >= 1.5), pour produire les DETs des deux timepoints (Fig. 2B, Venn).
-//
-// Entrées : - liste des quant.sf (un dossier <sample>/ par échantillon) <- SALMON_QUANT
-//           - data/samples.csv (sample, condition, timepoint, SRR)
-// Sorties : - det_d11.csv / det_d33.csv   : DETs up/down par timepoint (Venn Fig. 2B)
-//           - deseq2_results_d11/d33.csv  : tables complètes
-//           - sessionInfo.txt             : versions R/DESeq2 pour le rapport
-//
-// Expression : deseq2_toxo.R <dossier_quant> <samples.csv> [pvalue] [log2fc]
-// L'image est construite à partir de deseq2/Dockerfile (R + DESeq2, recette du Projet 1) :
-//   docker build -t deseq2:latest ../deseq2/
 
 process DESEQ2 {
     tag "toxo_2x2"

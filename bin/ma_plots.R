@@ -45,56 +45,10 @@ etiquettes$nom <- noms_trouves[match(etiquettes$gene, ids_cibles)]
 traduction <- res[res$gene %in% c(ids_traduction, ids_cibles), ]
 cat("Gènes tracés :", nrow(traduction), "(attendu : environ 153 + 6)\n")
 
-# Graphique
-couleurs <- c("Non-significatif" = "grey50", "Significatif" = "#E8352B")
-
-p <- ggplot(traduction, aes(x = log2baseMean, y = log2FoldChange)) +
-  geom_hline(yintercept = 0, linetype = "dashed") +
-  geom_point(aes(color = categorie), size = 2) +
-  
-  geom_point(data = traduction[traduction$aaRS, ],
-             aes(shape = "AA-tRNA synthetases"),
-             fill = NA, color = "black", size = 3.5, stroke = 1) +
-  
-  geom_text_repel(data = etiquettes, aes(label = nom),
-                  xlim = c(19, NA), direction = "y", hjust = 0,
-                  fontface = "italic", size = 5,
-                  segment.color = "black", segment.size = 0.5,
-                  min.segment.length = 0, box.padding = 0.5,
-                  max.overlaps = Inf, seed = 1) +
-  
-  scale_color_manual(values = couleurs, name = NULL) +
-  scale_shape_manual(values = 21, name = NULL,
-                     labels = expression(italic("AA-tRNA synthetases"))) +
-  scale_x_continuous(breaks = seq(0, 18, 2)) +
-  scale_y_continuous(breaks = -5:4) +
-  coord_cartesian(xlim = c(0, 23), ylim = c(-5.5, 4.5)) +
-  guides(color = guide_legend(order = 1),
-         shape = guide_legend(order = 2,
-                              override.aes = list(size = 2.5, stroke = 0.8))) +
-  labs(x = expression(Log[2]~base~Mean),
-       y = expression(Log[2]~Fold~Change)) +
-  theme_classic(base_size = 14) +
-  theme(legend.position        = "inside",
-        legend.position.inside = c(0.01, 0.01),
-        legend.justification   = c(0, 0),
-        legend.box             = "vertical",
-        legend.box.just        = "left",
-        legend.background      = element_blank(),
-        legend.key.size        = unit(0.4, "cm"),
-        legend.text            = element_text(size = 10),
-        legend.margin          = margin(0, 0, 0, 0),
-        legend.spacing.y       = unit(0, "cm"))
-
-print(p)
-ggsave("ma_plot.png", p, width = 8, height = 5, dpi = 300)
-
-
 
 
 # Production du MA-plot réduit
 
-# Graphique
 couleurs <- c("Non-significatif" = "grey50", "Significatif" = "#E8352B")
 
 p <- ggplot(traduction, aes(x = log2baseMean, y = log2FoldChange)) +

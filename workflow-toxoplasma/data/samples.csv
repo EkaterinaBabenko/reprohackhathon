@@ -1,0 +1,13 @@
+sample,condition,timepoint,SRR
+T111,infected,d11,SRR7657878
+T112,infected,d11,SRR7657881
+T113,infected,d11,SRR7657880
+C111,control,d11,SRR7657877
+C112,control,d11,SRR7657876
+C113,control,d11,SRR7657879
+T331,infected,d33,SRR7657874
+T332,infected,d33,SRR7657873
+T333,infected,d33,SRR7657872
+C331,control,d33,SRR7657883
+C332,control,d33,SRR7657882
+C333,control,d33,SRR7657875

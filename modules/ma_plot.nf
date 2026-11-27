@@ -1,7 +1,7 @@
 // Production du MA-plot (figure c de l'article) à partir de la sortie de DESeq2.
-// Entrées : deseq2_results.csv (baseMean, log2FoldChange, padj...)
+// Entrées : deseq2_results.csv
 // Sorties : ma_plot.png
-//
+
 // Appel du script R : ma_plot.R
 
 process MA_PLOT {

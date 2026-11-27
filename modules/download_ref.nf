@@ -1,7 +1,7 @@
 
 process DOWNLOAD_REF {
 
-    container "reprohack/wget:latest
+    container "reprohack/wget:latest"
 
     output:
     path "reference.fasta", emit: fasta

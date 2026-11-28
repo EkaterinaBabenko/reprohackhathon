@@ -7,8 +7,8 @@
 //           - deseq2_results_*.csv (tables complètes), emit: results
 //           - sessionInfo.txt (versions R/DESeq2 pour le rapport), emit: session_info
 //
-// Seuils de l'article de Hu et al. 2020 : p < 0.05 NON ajustée et |log2FC| >= 1.5
-// (params.deseq2_pvalue / params.deseq2_log2fc dans nextflow.config).
+// Seuils de l'article de Hu et al. 2020 (section Résultats) : padj < 0.05 (ajustée BH)
+// et |log2FC| >= 1.5 (params.deseq2_pvalue / params.deseq2_log2fc dans nextflow.config).
 // Design 2x2 (condition x timepoint) testé par timepoint : In vs WT à d11, puis à d33.
 
 process DESEQ2 {
@@ -28,7 +28,7 @@ process DESEQ2 {
     path "sessionInfo.txt",        emit: session_info
 
     script:
-    // Seuils de l'article de Hu et al. 2020 : p-value < 0.05 (NON ajustée) et |log2FC| >= 1.5
+    // Seuils de l'article de Hu et al. 2020 : padj < 0.05 (ajustée BH) et |log2FC| >= 1.5
     def pvalue = params.deseq2_pvalue ?: 0.05
     def log2fc = params.deseq2_log2fc ?: 1.5
     """

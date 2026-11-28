@@ -5,7 +5,7 @@
 # Usage : deseq2_toxo.R <dossier_quant> <samples.csv> [pvalue] [log2fc]
 #   dossier_quant : dossier contenant les sous-dossiers <sample>/quant.sf (sortie SALMON_QUANT)
 #   samples.csv   : colonnes sample, condition, timepoint, SRR
-#   pvalue        : seuil de p-value NON ajustée (défaut 0.05, comme dans l'article)
+#   pvalue        : seuil de p-value AJUSTÉE (padj, BH ; défaut 0.05, comme dans l'article)
 #   log2fc        : seuil sur |log2 fold-change| (défaut 1.5, comme dans l'article)
 #
 # Sorties (dossier courant) :
@@ -22,7 +22,7 @@ if (length(args) < 2) {
 }
 quant_dir   <- args[1]
 samples_file <- args[2]
-p_cutoff    <- if (length(args) >= 3) as.numeric(args[3]) else 0.05   # p-value non ajustée (papier)
+p_cutoff    <- if (length(args) >= 3) as.numeric(args[3]) else 0.05   # padj (p-value ajustée BH, Résultats de l'article)
 lfc_cutoff  <- if (length(args) >= 4) as.numeric(args[4]) else 1.5    # |log2FC| >= 1.5 (papier)
 
 # ---- Lecture des quantifications Salmon -------------------------------------------
@@ -57,7 +57,7 @@ col_data$condition <- relevel(col_data$condition, ref = "control")
 
 message("Échantillons : ", paste(rownames(col_data), col_data$condition,
                                  col_data$timepoint, sep = "=", collapse = ", "))
-message("Transcrits : ", nrow(counts), " | seuils : p < ", p_cutoff, ", |log2FC| >= ", lfc_cutoff)
+message("Transcrits : ", nrow(counts), " | seuils : padj < ", p_cutoff, ", |log2FC| >= ", lfc_cutoff)
 
 # Choix documenté (consigne : "test each timepoint separately or fit an interaction
 # model") : on teste chaque timepoint séparément (In vs WT à d11, puis In vs WT à d33)
@@ -68,18 +68,18 @@ run_contrast <- function(tp) {
                                    colData = droplevels(col_data[keep, , drop = FALSE]),
                                    design = ~ condition)
   dds_tp <- DESeq(dds_tp)
-  res <- results(dds_tp, contrast = c("condition", "infected", "control"), alpha = 1)
+  res <- results(dds_tp, contrast = c("condition", "infected", "control"), alpha = 0.05)
   res_df <- as.data.frame(res)
   res_df$transcript <- rownames(res_df)
   res_df <- res_df[order(res_df$pvalue, na.last = TRUE), ]
   write.csv(res_df, sprintf("deseq2_results_%s.csv", tp), row.names = FALSE)
 
-  det <- res_df[!is.na(res_df$pvalue) & res_df$pvalue < p_cutoff &
-                !is.na(res_df$log2FoldChange) & abs(res_df$log2FoldChange) >= lfc_cutoff, ]
+det <- res_df[!is.na(res_df$padj) & res_df$padj < p_cutoff &
+              !is.na(res_df$log2FoldChange) & abs(res_df$log2FoldChange) >= lfc_cutoff, ]
   det$direction <- ifelse(det$log2FoldChange > 0, "up", "down")
-  write.csv(det[, c("transcript", "log2FoldChange", "pvalue", "direction")],
+  write.csv(det[, c("transcript", "log2FoldChange", "pvalue", "padj", "direction")],
             sprintf("det_%s.csv", tp), row.names = FALSE)
-  message(sprintf("[%s] DETs (p < %g, |log2FC| >= %g) : %d (%d up, %d down)",
+  message(sprintf("[%s] DETs (padj < %g, |log2FC| >= %g) : %d (%d up, %d down)",
                   tp, p_cutoff, lfc_cutoff, nrow(det),
                   sum(det$direction == "up"), sum(det$direction == "down")))
   det

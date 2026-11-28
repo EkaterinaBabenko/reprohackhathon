@@ -40,7 +40,7 @@ include { VENN }                from "./modules/venn.nf"
     // create a channel for outputs
     samples_ch = channel.fromPath(params.samplesheet)
                         .splitCsv(header: true) // split the .csv --> one array / row
-                        .map { row -> tuple(row.sample, row.condition, row.timepoint, row.SRR) } // tuple: easier to use
+                        .map { row -> tuple(row.sample, row.condition, row.timepoint, row.SRR, row.fastq_1, row.fastq_2) } // tuple: easier to use
 
     // downloading samples (fasterq-dump + gzip)
     download_ch = DOWNLOAD_SRA(samples_ch)

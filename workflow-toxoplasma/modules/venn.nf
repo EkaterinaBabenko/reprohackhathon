@@ -24,7 +24,7 @@ process VENN {
 
     script:
     """
-    venn_diagram.R ${det_d11} ${det_d33}
+    Rscript ${projectDir}/bin/venn_diagram.R ${det_d11} ${det_d33}
     """
 
     stub:

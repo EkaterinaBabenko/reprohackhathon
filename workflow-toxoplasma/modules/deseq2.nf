@@ -32,7 +32,7 @@ process DESEQ2 {
     def pvalue = params.deseq2_pvalue ?: 0.05
     def log2fc = params.deseq2_log2fc ?: 1.5
     """
-    deseq2_toxo.R . ${samplesheet} ${pvalue} ${log2fc}
+    Rscript ${projectDir}/bin/deseq2_toxo.R . ${samplesheet} ${pvalue} ${log2fc}
     """
 
     stub:

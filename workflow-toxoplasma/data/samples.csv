@@ -4,7 +4,7 @@ T112,infected,d11,SRR7657881,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/001/SRR
 T113,infected,d11,SRR7657880,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/000/SRR7657880/SRR7657880_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/000/SRR7657880/SRR7657880_2.fastq.gz
 C111,control,d11,SRR7657877,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/007/SRR7657877/SRR7657877_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/007/SRR7657877/SRR7657877_2.fastq.gz
 C112,control,d11,SRR7657876,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/006/SRR7657876/SRR7657876_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/006/SRR7657876/SRR7657876_2.fastq.gz
-C113,control,d11,SRR7657879;https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/009/SRR7657879/SRR7657879_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/009/SRR7657879/SRR7657879_2.fastq.gz
+C113,control,d11,SRR7657879,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/009/SRR7657879/SRR7657879_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/009/SRR7657879/SRR7657879_2.fastq.gz
 T331,infected,d33,SRR7657874,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/004/SRR7657874/SRR7657874_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/004/SRR7657874/SRR7657874_2.fastq.gz
 T332,infected,d33,SRR7657873,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/003/SRR7657873/SRR7657873_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/003/SRR7657873/SRR7657873_2.fastq.gz
 T333,infected,d33,SRR7657872,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/002/SRR7657872/SRR7657872_1.fastq.gz,https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR765/002/SRR7657872/SRR7657872_2.fastq.gz
